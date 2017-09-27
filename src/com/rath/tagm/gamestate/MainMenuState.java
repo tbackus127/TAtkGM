@@ -1,5 +1,6 @@
 package com.rath.tagm.gamestate;
 
+import java.awt.Graphics;
 import java.util.List;
 
 public class MainMenuState extends MenuState {
@@ -52,6 +53,13 @@ public class MainMenuState extends MenuState {
 
   @Override
   public void onBack() {
+
+    // TODO Auto-generated method stub
+    
+  }
+
+  @Override
+  public void draw(Graphics g) {
 
     // TODO Auto-generated method stub
     
