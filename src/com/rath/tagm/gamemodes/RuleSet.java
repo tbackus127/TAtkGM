@@ -1,4 +1,4 @@
-package com.rath.tagm.gamestates;
+package com.rath.tagm.gamemodes;
 
 import com.rath.tagm.board.Panel;
 
