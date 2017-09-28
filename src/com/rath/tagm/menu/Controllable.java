@@ -1,4 +1,4 @@
-package com.rath.tagm.gamestate;
+package com.rath.tagm.menu;
 
 
 public interface Controllable {

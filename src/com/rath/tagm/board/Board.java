@@ -1,7 +1,7 @@
 package com.rath.tagm.board;
 
-import com.rath.tagm.gamestate.PlayState;
-import com.rath.tagm.gamestate.RuleSet;
+import com.rath.tagm.gamestates.PlayState;
+import com.rath.tagm.gamestates.RuleSet;
 import com.rath.tagm.util.Coord;
 
 public class Board {

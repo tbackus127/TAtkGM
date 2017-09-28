@@ -1,6 +1,9 @@
-package com.rath.tagm.gamestate;
+package com.rath.tagm.gamestates;
 
 import java.util.List;
+
+import com.rath.tagm.menu.Controllable;
+import com.rath.tagm.menu.MenuChoice;
 
 public abstract class MenuState extends GameState implements Controllable {
   

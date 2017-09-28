@@ -5,8 +5,8 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-import com.rath.tagm.gamestate.GameState;
-import com.rath.tagm.gamestate.TitleScreenState;
+import com.rath.tagm.gamestates.GameState;
+import com.rath.tagm.gamestates.TitleScreenState;
 
 public class GamePanel extends JPanel {
 
