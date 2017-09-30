@@ -1,4 +1,6 @@
-package com.rath.tagm.gamestate;
+package com.rath.tagm.menu;
+
+import com.rath.tagm.gamestates.GameState;
 
 public class MenuChoice extends MenuComponent {
 

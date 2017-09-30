@@ -1,3 +1,4 @@
+
 package com.rath.tagm;
 
 import javax.swing.SwingUtilities;
@@ -17,16 +18,17 @@ public class TAtkGM {
    * @param args runtime arguments; currently unused.
    */
   public static final void main(final String[] args) {
-
+    
     SwingUtilities.invokeLater(new Runnable() {
-
+      
       @Override
       public void run() {
-
+        
+        @SuppressWarnings("unused")
         final GameFrame f = new GameFrame();
       }
     });
-
+    
   }
-
+  
 }

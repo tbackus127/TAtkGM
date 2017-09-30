@@ -15,6 +15,9 @@ public class GameFrame extends JFrame {
 
   private void initGUI() {
 
+    final GamePanel gamePanel = new GamePanel();
+    add(gamePanel);
+    
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setSize(getPreferredSize());
     setResizable(false);

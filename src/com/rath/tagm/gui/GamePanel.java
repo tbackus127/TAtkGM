@@ -1,11 +1,12 @@
 package com.rath.tagm.gui;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-import com.rath.tagm.gamestate.GameState;
-import com.rath.tagm.gamestate.TitleScreenState;
+import com.rath.tagm.gamestates.GameState;
+import com.rath.tagm.gamestates.TitleScreenState;
 
 public class GamePanel extends JPanel {
 
@@ -20,6 +21,7 @@ public class GamePanel extends JPanel {
   private GamePanel(final GameState s) {
     super();
     this.state = s;
+    setBackground(Color.RED);
   }
 
   public void changeState(final GameState st) {
