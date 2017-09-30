@@ -1,4 +1,6 @@
-package com.rath.tagm.util;
+package com.rath.tagm.metrics;
+
+import com.rath.tagm.util.Direction;
 
 public class GameTime {
 
@@ -9,11 +11,15 @@ public class GameTime {
   private int minutes;
   private int hours;
 
+  public GameTime(final int h, final int m, final int s, final int t) {
+    this.hours = h;
+    this.minutes = m;
+    this.seconds = s;
+    this.ticks = t;
+  }
+
   public GameTime() {
-    this.ticks = 0;
-    this.seconds = 0;
-    this.minutes = 0;
-    this.hours = 0;
+    this(0, 0, 0, 0);
   }
 
   public void tick(final Direction dir) {
