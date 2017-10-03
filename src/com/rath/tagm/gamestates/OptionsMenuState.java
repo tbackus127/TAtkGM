@@ -1,8 +1,14 @@
+
 package com.rath.tagm.gamestates;
 
 import java.awt.Graphics;
 
-
+/**
+ * The configuration menu state.
+ * 
+ * @author Tim Backus tbackus127@gmail.com
+ *
+ */
 public class OptionsMenuState extends GameState {
   
   @Override

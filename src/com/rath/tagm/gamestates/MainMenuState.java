@@ -5,20 +5,34 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rath.tagm.menu.MenuChoice;
+import com.rath.tagm.menu.MenuSegue;
 
+/**
+ * This class contains information for the main menu.
+ * 
+ * @author Tim Backus tbackus127@gmail.com
+ *
+ */
 public class MainMenuState extends MenuState {
   
+  /**
+   * Default constructor.
+   */
   public MainMenuState() {
     super(buildMenuChoices());
   }
   
-  protected static List<MenuChoice> buildMenuChoices() {
-    final ArrayList<MenuChoice> choices = new ArrayList<MenuChoice>();
-    choices.add(new MenuChoice("Solo", new SoloMenuState()));
-    choices.add(new MenuChoice("Multi", new MultiMenuState()));
-    choices.add(new MenuChoice("Options", new OptionsMenuState()));
-    choices.add(new MenuChoice("Exit", null));
+  /**
+   * Builds a list of menu choices.
+   * 
+   * @return a List of MenuChoice objects.
+   */
+  protected static List<MenuSegue> buildMenuChoices() {
+    final ArrayList<MenuSegue> choices = new ArrayList<MenuSegue>();
+    choices.add(new MenuSegue("Solo", new SoloMenuState()));
+    choices.add(new MenuSegue("Multi", new MultiMenuState()));
+    choices.add(new MenuSegue("Options", new OptionsMenuState()));
+    choices.add(new MenuSegue("Exit", null));
     return choices;
   }
   

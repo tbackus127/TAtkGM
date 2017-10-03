@@ -3,7 +3,7 @@ package com.rath.tagm.gamestates;
 import java.awt.Graphics;
 import java.util.List;
 
-import com.rath.tagm.menu.MenuChoice;
+import com.rath.tagm.menu.MenuSegue;
 
 
 public class MultiMenuState extends MenuState {
@@ -12,7 +12,7 @@ public class MultiMenuState extends MenuState {
     super(buildMenuChoices());
   }
 
-  private static List<MenuChoice> buildMenuChoices() {
+  private static List<MenuSegue> buildMenuChoices() {
     // TODO Auto-generated method stub
     return null;
   }

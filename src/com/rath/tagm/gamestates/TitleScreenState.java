@@ -4,6 +4,12 @@ package com.rath.tagm.gamestates;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+/**
+ * The title screen scene.
+ * 
+ * @author Tim Backus tbackus127@gmail.com
+ *
+ */
 public class TitleScreenState extends TitleState {
   
   @Override

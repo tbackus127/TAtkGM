@@ -11,7 +11,7 @@ import com.rath.tagm.gui.GameFrame;
  * @author Tim Backus tbackus127@gmail.com
  */
 public class TAtkGM {
-
+  
   /**
    * Main method.
    * 
@@ -32,3 +32,5 @@ public class TAtkGM {
   }
   
 }
+
+// TODO: Add a global key listener to the GamePanel.
