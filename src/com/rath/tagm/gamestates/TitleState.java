@@ -9,8 +9,4 @@ import com.rath.tagm.menu.Controllable;
  * @author Tim Backus tbackus127@gmail.com
  *
  */
-public abstract class TitleState extends GameState implements Controllable {
-  
-  public abstract AudioSample
-  
-}
+public abstract class TitleState extends GameState implements Controllable {}
