@@ -96,17 +96,19 @@ public class PanelGenerator {
       } else {
         DP.p("  Col is 0 or 1; skipping horiz check");
       }
-
+      
       // Chose a random panel from the bag for this position
       final int randVal = rand.nextInt(panelBag.size());
       DP.p("  Chose " + randVal + " as panel ID");
-      for (int pid = 0; pid < panelBag.size(); pid++) {
-        if (pid == randVal) {
+      int idx = 0;
+      for (Integer pid : panelBag) {
+        if (idx++ == randVal) {
           result[i] = new NormalPanel(pid);
-          DP.p("Generated new panel " + pid);
+          DP.p("  Generated new panel " + pid);
         }
       }
 
+      
     }
 
     return result;
