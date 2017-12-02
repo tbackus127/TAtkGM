@@ -19,14 +19,18 @@ public abstract class PlayState extends GameState {
   /** The score, speed level, and other metrics that update while the game is playing. */
   protected final GameStats stats;
   
+  /** The object containing the rules this game type follows. */
+  protected final RuleSet rules;
+  
   /**
    * Default contructor.
    * 
    * @param b the Board this state will use.
    * @param s the GameStats object this state will update.
    */
-  protected PlayState(final Board b, final GameStats s) {
+  protected PlayState(final Board b, final RuleSet r, final GameStats s) {
     this.board = b;
+    this.rules = r;
     this.stats = s;
   }
   

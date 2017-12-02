@@ -12,8 +12,14 @@ import com.rath.tagm.util.Direction;
  */
 public abstract class RuleSet {
   
+  /** The maximum possible height of the board, including garbage blocks. */
+  public static final int BOARD_HEIGHT = 32;
+  
+  /** The play height of the board. */
+  public static final int PLAY_AREA_HEIGHT = 12;
+  
   /** The initial panel configuration for this game type. */
-  public abstract Panel[][] getInitialPanelConfig();
+  public abstract int[] getInitialPanelConfig();
   
   /** The starting score for this game type. */
   public abstract int getInitialScore();
@@ -32,5 +38,14 @@ public abstract class RuleSet {
   
   /** The speed data for this game type. */
   public abstract SpeedCurve getSpeedCurve();
+  
+  /** The initial number of maximum panel types. */
+  public abstract int getInitialMaxPanelTypes();
+  
+  /** Whether or not the board wraps around. */
+  public abstract boolean doesBoardWrap();
+  
+  /** The board width in panels. */
+  public abstract int getBoardWidth();
   
 }

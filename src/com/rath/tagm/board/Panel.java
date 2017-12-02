@@ -6,7 +6,7 @@ package com.rath.tagm.board;
  * 
  * @author Tim Backus tbackus127@gmail.com
  */
-public class Panel {
+public abstract class Panel {
   
   /** The type of panel this is (normal, garbage, etc.). */
   protected final PanelType type;
@@ -77,5 +77,7 @@ public class Panel {
     
     return state;
   }
+  
+  public abstract char getCharRepresentation();
   
 }

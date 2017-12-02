@@ -1,6 +1,9 @@
 
 package com.rath.tagm.metrics;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import com.rath.tagm.board.Panel;
 import com.rath.tagm.util.Direction;
 import com.rath.tagm.util.PanelGenerator;
@@ -30,13 +33,49 @@ public class ClassicRuleSet extends RuleSet {
   
   /** How many ticks the stack waits before raising. */
   private static final int SHIFT_DELAY = SPEED_CURVE.getStackShiftDelay(SCORE);
+
+  /** The number of maximum panel types the game begins with. */
+  private static final int INIT_PANEL_IDS = 6;
+  
+  /** Whether or not the board wraps. */
+  private static final boolean BOARD_WRAPS = false;
+  
+  /** The number of panels in a row. */
+  private static final int BOARD_WIDTH = 6;
+  
+  /** The possible panel configurations. */
+  private static final ArrayList<int[]> PANEL_CONFIGS = buildPanelConfigs();
   
   @Override
-  public Panel[][] getInitialPanelConfig() {
+  public int[] getInitialPanelConfig() {
     
-    return PanelGenerator.createClassicConfig(this);
+    final Random rand = new Random();
+    return PANEL_CONFIGS.get(rand.nextInt(PANEL_CONFIGS.size()));
+    
   }
-  
+
+  private void deletePanels(int[] colDeletions) {
+
+    // TODO this
+  }
+
+  /**
+   * Builds the possible pannel configurations. The values represent the number of panels to delete from the
+   * top of the PLAY AREA (not board array!). So if the array is [5, 6, 3, 7, 7, 6], this configuration will
+   * start with 7, 6, 9, 5, 5, and 6 panels in each column, respectively.
+   * 
+   * @return 
+   */
+  private static ArrayList<int[]> buildPanelConfigs() {
+
+    final ArrayList<int[]> result = new ArrayList<int[]>();
+    
+    int[] config1 = {3, 3, 3, 3, 3, 3};
+    result.add(config1);
+    
+    return result;
+  }
+
   @Override
   public int getInitialStackShiftDelay() {
     
@@ -71,6 +110,25 @@ public class ClassicRuleSet extends RuleSet {
   public SpeedCurve getSpeedCurve() {
     
     return SPEED_CURVE;
+  }
+
+  @Override
+  public int getInitialMaxPanelTypes() {
+
+    // TODO Auto-generated method stub
+    return INIT_PANEL_IDS;
+  }
+
+  @Override
+  public boolean doesBoardWrap() {
+
+    return BOARD_WRAPS;
+  }
+
+  @Override
+  public int getBoardWidth() {
+
+    return BOARD_WIDTH;
   }
   
 //@formatter:off

@@ -17,13 +17,13 @@ import com.rath.tagm.metrics.RuleSet;
 public class ClassicPlayState extends PlayState {
   
   /** A collection of game mechanic specifications unique to this game type. */
-  private static final RuleSet RULES = new ClassicRuleSet();
+  private static final RuleSet RULE_SET = new ClassicRuleSet();
   
   /**
    * Default Constructor.
    */
   public ClassicPlayState() {
-    super(new Board(RULES), new GameStats(RULES));
+    super(new Board(RULE_SET), RULE_SET, new GameStats(RULE_SET));
   }
   
   @Override

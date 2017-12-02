@@ -1,8 +1,10 @@
 
 package com.rath.tagm.board;
 
+import com.rath.tagm.metrics.GameStats;
 import com.rath.tagm.metrics.RuleSet;
 import com.rath.tagm.util.Coord;
+import com.rath.tagm.util.PanelGenerator;
 
 /**
  * This class contains panel and play area information for the game.
@@ -24,7 +26,31 @@ public class Board {
    */
   public Board(final RuleSet rs) {
     this.rules = rs;
-    this.panels = rules.getInitialPanelConfig();
+    this.panels = PanelGenerator.generateInitialLayout(this.rules, rules.getInitialPanelConfig());
+  }
+
+  /**
+   * Gets the specified row of panels.
+   * 
+   * @param rowNum the row number (zero-indexed) to get.
+   * @return a Panel array.
+   */
+  public final Panel[] getRow(final int rowNum) {
+
+    return this.panels[rowNum];
+  }
+
+  /**
+   * Adds a new row to the bottom of the stack while shifting the rest up.
+   * 
+   * @param row the row of panels to add as a Panel array.
+   */
+  public final void appendRow(final Panel[] row) {
+
+    for (int i = 0; i < panels.length - 1; i++) {
+      panels[i] = panels[i + 1];
+    }
+    panels[RuleSet.PLAY_AREA_HEIGHT - 1] = row;
   }
 
   /**
@@ -93,7 +119,22 @@ public class Board {
    * @param swapPos the position of the cursor where the panels were swapped.
    */
   private final void updatePanels(final Coord swapPos) {
-    
+    //TODO propogate panel changes from swap and tick accordingly
+  }
+
+  /**
+   * Provides a way to get an ASCII representation of a row.
+   * 
+   * @param row the row of Panels as an array.
+   * @return the String representation of the panels.
+   */
+  public static final String getRowString(final Panel[] row) {
+
+    String result = "";
+    for (int i = 0; i < row.length; i++) {
+      result += row[i].getCharRepresentation();
+    }
+    return result;
   }
 
 }
