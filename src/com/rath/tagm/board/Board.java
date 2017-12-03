@@ -1,7 +1,6 @@
 
 package com.rath.tagm.board;
 
-import com.rath.tagm.metrics.GameStats;
 import com.rath.tagm.metrics.RuleSet;
 import com.rath.tagm.util.Coord;
 import com.rath.tagm.util.PanelGenerator;
@@ -70,7 +69,7 @@ public class Board {
    * @param startX the horizontal starting position for the leftmost panel for this garbage block.
    * @param len the length of the garbage block.
    */
-  public final void dropGarbage(final int startX, final int len) {
+  public final void dropGarbage(final int startX, final int len, final int layers) {
 
     // TODO this
   }

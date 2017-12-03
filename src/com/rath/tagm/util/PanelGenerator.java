@@ -34,54 +34,54 @@ public class PanelGenerator {
     HashSet<Integer> panelBag;
 
     final int boardWidth = rs.getBoardWidth();
-    DP.p("Generating row with width " + boardWidth + ":");
+    DP.l("Generating row with width " + boardWidth + ":");
 
     final Panel[] result = new Panel[boardWidth];
 
     // Iterate through each panel position in a row
     for (int i = 0; i < boardWidth; i++) {
 
-      DP.p(" Generating col " + i + ":");
+      DP.l(" Generating col " + i + ":");
 
       // If this is the initial generation, ignore mid-game changes to number of panels
       final int numPanelTypes = (gs != null) ? gs.getNumPanelTypes() : rs.getInitialMaxPanelTypes();
-      DP.p("  #panel types: " + numPanelTypes);
+      DP.l("  #panel types: " + numPanelTypes);
 
       panelBag = new HashSet<Integer>();
       // Fill the bag with possible panels
       for (int p = 0; p < numPanelTypes; p++) {
         panelBag.add(p);
-        DP.p("  Added id " + p + " to panel bag");
+        DP.l("  Added id " + p + " to panel bag");
       }
       int checkPanel = -1;
 
       // If we're generating the first two rows, don't check vertical collisions 
       if (prevprevRow != null && prevRow != null && prevprevRow[i] != null && prevRow[i] != null) {
 
-        DP.p("  Checking previous rows");
+        DP.l("  Checking previous rows");
 
         // If the two panels above the current space are the same, remove that panel
         //   from the set of possible panels to generate
         if ((checkPanel = prevRow[i].getPanelID()) == prevprevRow[i].getPanelID()) {
 
-          DP.p("   Vertical collision of " + checkPanel);
+          DP.l("   Vertical collision of " + checkPanel);
           panelBag.remove(checkPanel);
         }
       } else {
-        DP.p("  Skipping vertical collision check");
+        DP.l("  Skipping vertical collision check");
       }
 
       // Horizontal checking; don't check for positions 0 and 1
       if (i > 1) {
 
-        DP.p("  Checking horiz collision:");
+        DP.l("  Checking horiz collision:");
 
         checkPanel = result[i - 1].getPanelID();
 
         // If we're checking a wrapped panel
         if (rs.doesBoardWrap() && i == boardWidth - 1) {
           if (checkPanel == result[0].getPanelID()) {
-            DP.p("   Board wrap collision with " + checkPanel);
+            DP.l("   Board wrap collision with " + checkPanel);
             panelBag.remove(checkPanel);
           }
 
@@ -89,26 +89,24 @@ public class PanelGenerator {
 
         // Check the previous two panels to the left that have been generated
         if (checkPanel == result[i - 2].getPanelID()) {
-          DP.p("   Horizontal collision with " + checkPanel);
+          DP.l("   Horizontal collision with " + checkPanel);
           panelBag.remove(checkPanel);
         }
 
       } else {
-        DP.p("  Col is 0 or 1; skipping horiz check");
+        DP.l("  Col is 0 or 1; skipping horiz check");
       }
       
       // Chose a random panel from the bag for this position
       final int randVal = rand.nextInt(panelBag.size());
-      DP.p("  Chose " + randVal + " as panel ID");
+      DP.l("  Chose " + randVal + " as panel ID");
       int idx = 0;
       for (Integer pid : panelBag) {
         if (idx++ == randVal) {
           result[i] = new NormalPanel(pid);
-          DP.p("  Generated new panel " + pid);
+          DP.l("  Generated new panel " + pid);
         }
       }
-
-      
     }
 
     return result;
