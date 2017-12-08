@@ -13,6 +13,10 @@ public class ConfigFetcher {
   public static final void buildMap() {
 
     final File cfile = new File(PATH);
+    if (!cfile.exists()) {
+      System.err.println("Cannot find file \"" + cfile.getAbsolutePath() + "\".");
+    }
+
     Scanner fscan = null;
     try {
       fscan = new Scanner(cfile);
@@ -30,12 +34,15 @@ public class ConfigFetcher {
     return configMap.get(name);
   }
 
-  private static final void buildMap(Scanner fscan) {
+  private static final void buildMap(final Scanner fscan) {
 
     int lineNum = 1;
 
+    // TODO: figure out why the map isn't being built here.
+
     while (fscan.hasNextLine()) {
       final String line = fscan.nextLine();
+      DP.l("Config file line: \"" + line + "\".");
       final String[] tokens = line.split(":");
       if (tokens.length != 2) {
         System.err.println("Config error on line " + lineNum + "!");

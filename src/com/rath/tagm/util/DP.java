@@ -8,7 +8,7 @@ package com.rath.tagm.util;
 public class DP {
 
   /** Whether to print debug information. */
-  private static final boolean DEBUG = false;
+  private static final boolean DEBUG = true;
 
   /**
    * Debug println. Only prints if DEBUG flag is true.

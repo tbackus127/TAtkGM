@@ -28,7 +28,7 @@ public enum SpriteType {
     this.fileName = fileName;
   }
 
-  public String getFileName() {
+  public final String getFileName() {
 
     return this.fileName;
   }

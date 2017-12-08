@@ -5,14 +5,18 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.io.IOException;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JPanel;
 
-import com.rath.tagm.audio.AudioType;
+import com.rath.tagm.audio.BGMPlayer;
+import com.rath.tagm.audio.SFXPlayer;
 import com.rath.tagm.gamestates.GameState;
 import com.rath.tagm.gamestates.TitleScreenState;
 import com.rath.tagm.img.SpriteRegistry;
 import com.rath.tagm.img.SpriteType;
 import com.rath.tagm.util.ConfigFetcher;
+import com.rath.tagm.util.DP;
 import com.rath.tagm.util.ThemeFileFetcher;
 
 /**
@@ -42,6 +46,7 @@ public class GamePanel extends JPanel {
     setBackground(Color.RED);
 
     final String theme = ConfigFetcher.getValue("theme");
+    DP.l("Theme is set to \"" + theme + "\".");
     final ThemeFileFetcher tff = new ThemeFileFetcher(theme);
     try {
       loadSprites(tff);
@@ -68,20 +73,35 @@ public class GamePanel extends JPanel {
     this.state.draw(g);
   }
 
+  /**
+   * Loads the current theme's sprites into memory.
+   * 
+   * @param tff the ThemeFileFetcher object already constructed with a theme folder to load from.
+   * @throws IOException if the sprite's image file is not found.
+   */
   private static final void loadSprites(final ThemeFileFetcher tff) throws IOException {
 
     for (SpriteType st : SpriteType.values()) {
-      SpriteRegistry.loadSprite(tff, st.getFileName());
+      SpriteRegistry.loadSprite(tff, st);
     }
   }
 
+  /**
+   * Loads the current theme's audio clips into memory.
+   * 
+   * @param tff the ThemeFileFetcher object already constructed with a theme folder to load from.
+   * @throws IOException if the audio file is not found.
+   */
   private static final void loadAudio(final ThemeFileFetcher tff) throws IOException {
 
-    
-    for (AudioType at : AudioType.values()) {
-      
+    try {
+      BGMPlayer.buildClipMap(tff);
+      SFXPlayer.buildClipMap(tff);
+    } catch (UnsupportedAudioFileException e) {
+      e.printStackTrace();
+    } catch (LineUnavailableException e) {
+      e.printStackTrace();
     }
-
   }
 
 }
