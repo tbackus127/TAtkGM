@@ -14,6 +14,9 @@ public abstract class GameState {
 
   /** A handle to the GamePanel to allow the state to change. */
   protected final GamePanel gamePanel;
+  
+  /** The number of ticks that have elapsed thus far. */
+  protected int tickCount;
 
   /**
    * Constructor called by child classes.
@@ -22,10 +25,13 @@ public abstract class GameState {
    */
   protected GameState(final GamePanel panel) {
     this.gamePanel = panel;
+    this.tickCount = 0;
   }
 
   /** Perform calculations and updates. */
-  public abstract void doGameTick();
+  public synchronized void doGameTick() {
+    this.tickCount++;
+  };
 
   /** Render the scene. */
   public abstract void draw(Graphics g);

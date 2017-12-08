@@ -30,6 +30,6 @@ public enum SpriteType {
 
   public final String getFileName() {
 
-    return this.fileName;
+    return this.fileName + ".png";
   }
 }

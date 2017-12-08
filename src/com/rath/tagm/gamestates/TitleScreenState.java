@@ -3,8 +3,11 @@ package com.rath.tagm.gamestates;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
 import com.rath.tagm.gui.GamePanel;
+import com.rath.tagm.img.SpriteRegistry;
+import com.rath.tagm.img.SpriteType;
 
 /**
  * The title screen scene.
@@ -13,25 +16,29 @@ import com.rath.tagm.gui.GamePanel;
  */
 public class TitleScreenState extends TitleState {
 
-  
-  
+  /**
+   * Default constructor.
+   * 
+   * @param p a reference to the render panel.
+   */
   public TitleScreenState(GamePanel p) {
     super(p);
   }
 
   @Override
   public void doGameTick() {
-
-    // TODO Auto-generated method stub
-
+    
+    // TODO: animation stuff here
+    
+    super.doGameTick();
   }
 
   @Override
   public void draw(Graphics g) {
 
     final Graphics2D g2 = (Graphics2D) g;
+    g2.drawImage(SpriteRegistry.getSprite(SpriteType.BG_TITLE), 0, 0, 640, 480, null);
 
-    g2.fillRect(0, 0, 640, 480);
   }
 
   @Override
@@ -60,7 +67,8 @@ public class TitleScreenState extends TitleState {
 
   @Override
   public void onSelect() {
-    // TODO this one
+
+    gamePanel.transitionToState(new MainMenuState(gamePanel));
   }
 
   @Override

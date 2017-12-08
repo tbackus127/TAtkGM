@@ -3,11 +3,14 @@ package com.rath.tagm.gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import com.rath.tagm.audio.BGMPlayer;
 import com.rath.tagm.audio.SFXPlayer;
@@ -26,6 +29,9 @@ import com.rath.tagm.util.ThemeFileFetcher;
  */
 public class GamePanel extends JPanel {
 
+  /** The target number of frames per second. */
+  private static final int TARGET_FRAMERATE = 60;
+
   /** Serial UID. */
   private static final long serialVersionUID = 1L;
 
@@ -34,6 +40,9 @@ public class GamePanel extends JPanel {
 
   /** The current state of the game. */
   private GameState state;
+
+  /** The tick timer. */
+  private final Timer tickTimer;
 
   /**
    * Creates a new panel with the specified state.
@@ -45,6 +54,7 @@ public class GamePanel extends JPanel {
     this.state = DEFAULT_STATE;
     setBackground(Color.RED);
 
+    ConfigFetcher.buildMap();
     final String theme = ConfigFetcher.getValue("theme");
     DP.l("Theme is set to \"" + theme + "\".");
     final ThemeFileFetcher tff = new ThemeFileFetcher(theme);
@@ -54,17 +64,36 @@ public class GamePanel extends JPanel {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    // setup tick timer here
+
+    this.tickTimer = new Timer((int) (1000 / TARGET_FRAMERATE), new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e) {
+
+        state.doGameTick();
+
+      }
+
+    });
   }
 
   /**
-   * Changes the state to the given state.
+   * Changes the state to the given state without a transition.
    * 
    * @param st the GameState to set the current to.
    */
   public void changeState(final GameState st) {
 
     this.state = st;
+  }
+
+  /**
+   * Performs a transition to the given game state.
+   * 
+   * @param newState the next GameState to start rendering and ticking after fading out/in.
+   */
+  public void transitionToState(final GameState newState) {
+    // TODO: this
   }
 
   @Override
@@ -82,6 +111,7 @@ public class GamePanel extends JPanel {
   private static final void loadSprites(final ThemeFileFetcher tff) throws IOException {
 
     for (SpriteType st : SpriteType.values()) {
+      DP.l("Loading sprite " + st.getFileName());
       SpriteRegistry.loadSprite(tff, st);
     }
   }

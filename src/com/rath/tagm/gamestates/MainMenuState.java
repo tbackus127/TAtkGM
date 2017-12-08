@@ -18,8 +18,8 @@ public class MainMenuState extends MenuState {
   /**
    * Default constructor.
    */
-  public MainMenuState(final GamePanel g, final GamePanel p) {
-    super(g, buildMenuChoices(p));
+  public MainMenuState(final GamePanel g) {
+    super(g, buildMenuChoices(g));
   }
 
   /**

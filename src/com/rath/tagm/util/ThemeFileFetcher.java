@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -56,7 +57,7 @@ public class ThemeFileFetcher {
   public Clip getAudioClip(final AudioType audioType, final ClipType audioName) {
 
     final File audioFile = new File(
-        "../themes/" + this.theme + "/" + audioType.getDirectoryName() + "/" + audioName + ".wav");
+        "../themes/" + this.theme + "/snd/" + audioType.getDirectoryName() + "/" + audioName + ".wav");
 
     AudioInputStream ais;
     try {
@@ -96,9 +97,15 @@ public class ThemeFileFetcher {
    */
   public BufferedImage getImageFile(final SpriteType type) {
 
-    // TODO: This, and make the image type an enum.
-    return null;
-
+    final File imageFile = new File("Themes/" + theme + "/img/" + type.getFileName());
+    DP.l(imageFile.getAbsolutePath());
+    BufferedImage result = null;
+    try {
+      result = ImageIO.read(imageFile);
+    } catch (IOException e) {
+      System.err.println("Can't find image file \"" + imageFile + "\".");
+    }
+    return result;
   }
 
   /**

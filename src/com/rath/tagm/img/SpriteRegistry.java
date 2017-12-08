@@ -11,7 +11,7 @@ import com.rath.tagm.util.ThemeFileFetcher;
  * @author Tim Backus tbackus127@gmail.com
  */
 public class SpriteRegistry {
-
+  
   /** The sprite map. */
   private static final HashMap<String, BufferedImage> spriteMap = new HashMap<String, BufferedImage>();
 
