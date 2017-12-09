@@ -16,7 +16,7 @@ public class ConfigFetcher {
   private static final String PATH = "TAtkGM.conf";
 
   /** The map storing config names and values as a String. */
-  private static HashMap<String, String> configMap = null;
+  private static HashMap<String, String> configMap = null;  
 
   /**
    * Builds the config map.
@@ -72,8 +72,9 @@ public class ConfigFetcher {
       final String[] tokens = line.split(":");
       if (tokens.length != 2) {
         System.err.println("Config error on line " + lineNum + "!");
+      } else {
+        configMap.put(tokens[0].trim(), tokens[1].trim());
       }
-      configMap.put(tokens[0].trim().toLowerCase(), tokens[1].trim().toLowerCase());
       lineNum++;
     }
 

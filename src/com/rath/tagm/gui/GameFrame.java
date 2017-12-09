@@ -36,7 +36,9 @@ public class GameFrame extends JFrame {
     setResizable(false);
     setLocationRelativeTo(null);
     setVisible(true);
+    setFocusable(true);
     requestFocus();
+    gamePanel.requestFocusInWindow();
   }
 
   @Override

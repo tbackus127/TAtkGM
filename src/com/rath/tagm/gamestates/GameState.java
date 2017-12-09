@@ -14,7 +14,7 @@ public abstract class GameState {
 
   /** A handle to the GamePanel to allow the state to change. */
   protected final GamePanel gamePanel;
-  
+
   /** The number of ticks that have elapsed thus far. */
   protected int tickCount;
 
@@ -30,6 +30,7 @@ public abstract class GameState {
 
   /** Perform calculations and updates. */
   public synchronized void doGameTick() {
+
     this.tickCount++;
   };
 

@@ -4,6 +4,7 @@ package com.rath.tagm.gamestates;
 import com.rath.tagm.board.Board;
 import com.rath.tagm.gui.GamePanel;
 import com.rath.tagm.menu.Controllable;
+import com.rath.tagm.menu.ControllableExt;
 import com.rath.tagm.metrics.GameStats;
 import com.rath.tagm.metrics.RuleSet;
 
@@ -12,7 +13,7 @@ import com.rath.tagm.metrics.RuleSet;
  * 
  * @author Tim Backus tbackus127@gmail.com
  */
-public abstract class PlayState extends GameState implements Controllable {
+public abstract class PlayState extends GameState implements Controllable, ControllableExt {
 
   /** The grid of panels. */
   protected final Board board;

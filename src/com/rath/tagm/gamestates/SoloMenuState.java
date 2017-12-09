@@ -28,49 +28,49 @@ public class SoloMenuState extends MenuState {
   }
 
   @Override
-  public void onUp() {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
-  public void onDown() {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
-  public void onLeft() {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
-  public void onRight() {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
-  public void onSelect() {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
-  public void onBack() {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
-  public void doGameTick() {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
   public void draw(Graphics g) {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void onUp(boolean pressed) {
+
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void onDown(boolean pressed) {
+
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void onLeft(boolean pressed) {
+
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void onRight(boolean pressed) {
+
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void onSelect(boolean pressed) {
+
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void onBack(boolean pressed) {
+
     // TODO Auto-generated method stub
 
   }

@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -18,6 +19,7 @@ import com.rath.tagm.gamestates.GameState;
 import com.rath.tagm.gamestates.TitleScreenState;
 import com.rath.tagm.img.SpriteRegistry;
 import com.rath.tagm.img.SpriteType;
+import com.rath.tagm.menu.Controllable;
 import com.rath.tagm.util.ConfigFetcher;
 import com.rath.tagm.util.DP;
 import com.rath.tagm.util.ThemeFileFetcher;
@@ -41,8 +43,11 @@ public class GamePanel extends JPanel {
   /** The current state of the game. */
   private GameState state;
 
-  /** The tick timer. */
-  private final Timer tickTimer;
+  /** The game tick timer. */
+  private Timer tickTimer;
+
+  /** This panel's key listener. */
+  private GameKeyListener keyListener;
 
   /**
    * Creates a new panel with the specified state.
@@ -65,6 +70,7 @@ public class GamePanel extends JPanel {
       e.printStackTrace();
     }
 
+    // Add this panel's tick timer
     this.tickTimer = new Timer((int) (1000 / TARGET_FRAMERATE), new ActionListener() {
 
       @Override
@@ -75,6 +81,13 @@ public class GamePanel extends JPanel {
       }
 
     });
+    this.tickTimer.start();
+
+    // Add this panel's key listener
+    KeyBindings.loadKeyBindings();
+    this.keyListener = new GameKeyListener((Controllable) this.state);
+
+    this.addKeyListener(this.keyListener);
   }
 
   /**
@@ -84,6 +97,7 @@ public class GamePanel extends JPanel {
    */
   public void changeState(final GameState st) {
 
+    this.keyListener.changeState((Controllable) st);
     this.state = st;
   }
 
@@ -93,13 +107,29 @@ public class GamePanel extends JPanel {
    * @param newState the next GameState to start rendering and ticking after fading out/in.
    */
   public void transitionToState(final GameState newState) {
-    // TODO: this
+
+    doFadeOut();
+    changeState(newState);
+    doFadeIn();
+  }
+
+  public void closeEverything() {
+
+    this.tickTimer.stop();
   }
 
   @Override
   public void paintComponent(Graphics g) {
 
     this.state.draw(g);
+  }
+
+  private final void doFadeOut() {
+    //TODO: this
+  }
+
+  private final void doFadeIn() {
+    //TODO: this
   }
 
   /**

@@ -47,42 +47,63 @@ public class ClassicPlayState extends PlayState {
   }
 
   @Override
-  public void onUp() {
+  public void onUp(final boolean pressed) {
 
     // TODO Auto-generated method stub
 
   }
 
   @Override
-  public void onDown() {
+  public void onDown(final boolean pressed) {
 
     // TODO Auto-generated method stub
 
   }
 
   @Override
-  public void onLeft() {
+  public void onLeft(final boolean pressed) {
 
     // TODO Auto-generated method stub
 
   }
 
   @Override
-  public void onRight() {
+  public void onRight(final boolean pressed) {
 
     // TODO Auto-generated method stub
 
   }
 
   @Override
-  public void onSelect() {
+  public void onSelect(final boolean pressed) {
 
     // TODO Auto-generated method stub
 
   }
 
   @Override
-  public void onBack() {
+  public void onBack(final boolean pressed) {
+
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void onUndo(final boolean pressed) {
+
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void onRaiseStack(final boolean pressed) {
+
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void onPause(final boolean pressed) {
 
     // TODO Auto-generated method stub
 

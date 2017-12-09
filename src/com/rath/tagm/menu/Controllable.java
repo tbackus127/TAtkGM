@@ -10,21 +10,21 @@ package com.rath.tagm.menu;
 public interface Controllable {
   
   /** What should happen when the player presses the UP key. */
-  public void onUp();
+  public void onUp(final boolean pressed);
   
   /** What should happen when the player presses the DOWN key. */
-  public void onDown();
+  public void onDown(final boolean pressed);
   
   /** What should happen when the player presses the LEFT key. */
-  public void onLeft();
+  public void onLeft(final boolean pressed);
   
   /** What should happen when the player presses the RIGHT key. */
-  public void onRight();
+  public void onRight(final boolean pressed);
   
   /** What should happen when the player presses the SELECT key. */
-  public void onSelect();
+  public void onSelect(final boolean pressed);
   
   /** What should happen when the player presses the BACK key. */
-  public void onBack();
+  public void onBack(final boolean pressed);
   
 }

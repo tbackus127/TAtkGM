@@ -3,7 +3,6 @@ package com.rath.tagm.gamestates;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 
 import com.rath.tagm.gui.GamePanel;
 import com.rath.tagm.img.SpriteRegistry;
@@ -27,10 +26,15 @@ public class TitleScreenState extends TitleState {
 
   @Override
   public void doGameTick() {
-    
+
     // TODO: animation stuff here
-    
+
     super.doGameTick();
+  }
+
+  @Override
+  public void onSelect(final boolean pressed) {
+    gamePanel.transitionToState(new MainMenuState(gamePanel));
   }
 
   @Override
@@ -42,39 +46,33 @@ public class TitleScreenState extends TitleState {
   }
 
   @Override
-  public void onUp() {
+  public void onUp(final boolean pressed) {
 
-    onSelect();
+    onSelect(pressed);
   }
 
   @Override
-  public void onDown() {
+  public void onDown(final boolean pressed) {
 
-    onSelect();
+    onSelect(pressed);
   }
 
   @Override
-  public void onLeft() {
+  public void onLeft(final boolean pressed) {
 
-    onSelect();
+    onSelect(pressed);
   }
 
   @Override
-  public void onRight() {
+  public void onRight(final boolean pressed) {
 
-    onSelect();
+    onSelect(pressed);
   }
 
   @Override
-  public void onSelect() {
+  public void onBack(final boolean pressed) {
 
-    gamePanel.transitionToState(new MainMenuState(gamePanel));
-  }
-
-  @Override
-  public void onBack() {
-
-    onSelect();
+    onSelect(pressed);
   }
 
 }
