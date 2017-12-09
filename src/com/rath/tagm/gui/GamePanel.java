@@ -76,7 +76,9 @@ public class GamePanel extends JPanel {
       @Override
       public void actionPerformed(ActionEvent e) {
 
+        // Perform a game tick and repaint the window
         state.doGameTick();
+        repaint();
 
       }
 
@@ -97,8 +99,10 @@ public class GamePanel extends JPanel {
    */
   public void changeState(final GameState st) {
 
+    this.tickTimer.stop();
     this.keyListener.changeState((Controllable) st);
     this.state = st;
+    this.tickTimer.restart();
   }
 
   /**

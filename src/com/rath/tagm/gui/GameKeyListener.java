@@ -65,7 +65,6 @@ public class GameKeyListener implements KeyListener {
     // Check global keys
     switch (key) {
       case KEY_UP:
-        DP.l("KeyListener caught UP.");
         this.gameState.onUp(true);
       case KEY_LEFT:
         this.gameState.onLeft(true);

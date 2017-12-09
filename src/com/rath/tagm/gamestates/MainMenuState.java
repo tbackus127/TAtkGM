@@ -1,7 +1,9 @@
 
 package com.rath.tagm.gamestates;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,7 +91,10 @@ public class MainMenuState extends MenuState {
   @Override
   public void draw(Graphics g) {
 
-    // TODO Auto-generated method stub
+    final Graphics2D g2 = (Graphics2D) g;
+    g2.setColor(Color.CYAN);
+    g2.fillRect(0, 0, 640, 480);
+    
 
   }
 
