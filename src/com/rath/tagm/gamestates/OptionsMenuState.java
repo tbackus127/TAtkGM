@@ -12,6 +12,11 @@ import com.rath.tagm.gui.GamePanel;
  */
 public class OptionsMenuState extends GameState {
 
+  /**
+   * Default constructor.
+   * 
+   * @param panel a reference to the rendering panel.
+   */
   protected OptionsMenuState(GamePanel panel) {
     super(panel);
   }
